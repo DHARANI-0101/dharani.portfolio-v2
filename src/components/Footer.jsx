@@ -13,10 +13,10 @@ export const Footer = () => {
 
 
         <div className="flex items-center justify-center md:justify-start gap-2 flex-wrap text-sm">
-          <span className="text-white">System Uptime:</span>
+          <span className="text-white">⏱️System Uptime:</span>
           <span className="text-violet-400 font-bold">Active</span>
           <span className="mx-2 text-blue-400">|</span>
-          <span className="text-white">Last Deploy:</span>
+          <span className="text-white">🚀Last Deploy:</span>
           <span className="text-violet-400 font-bold">Today</span>
         </div>
 

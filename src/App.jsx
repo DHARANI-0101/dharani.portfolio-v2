@@ -10,7 +10,7 @@ function App() {
       <HashRouter>
         <Routes>
           <Route index element={<Home />} />
-          {/* Optional: keep NotFound for invalid hashes */}
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </HashRouter>

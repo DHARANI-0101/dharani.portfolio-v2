@@ -136,13 +136,13 @@ export const SkillsSection = () => {
         </h2>
 
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
               className={cn(
-                "px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 border cursor-pointer",
+                "min-w-[fit-content] px-4 sm:px-6 py-1 sm:py-2 rounded-full text-sm sm:text-base font-medium transition-all duration-300 border cursor-pointer truncate",
                 activeCategory === category
                   ? "bg-violet-400 text-black border-violet-400 shadow-md shadow-violet-400/40 scale-105"
                   : "bg-transparent text-white border border-violet-500 hover:border-violet-400 hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] hover:scale-105"

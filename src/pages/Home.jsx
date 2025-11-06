@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Navbar } from "../components/Navbar";
-import { StarBackground } from "../components/StarBackground";
 import { HeroSection } from "../components/HeroSection";
 import { AboutSection } from "../components/AboutSection";
 import { SkillsSection } from "../components/SkillsSection";
@@ -21,8 +20,8 @@ export const Home = () => {
   if (loading) return <Loader onFinish={() => setLoading(false)} />;
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <StarBackground />
+    <div className="min-h-screen bg-[#0b0c1a] text-white overflow-x-hidden">
+
       <Navbar />
 
       <main>
