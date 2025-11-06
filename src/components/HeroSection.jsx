@@ -82,7 +82,7 @@ export const HeroSection = () => {
           Because Great Systems Aren’t Built — They’re Architected.
         </p>
 
-   
+
         <div className="relative h-8 sm:h-10 mt-4">
           <AnimatePresence mode="wait">
             <motion.h3
@@ -112,29 +112,27 @@ export const HeroSection = () => {
           </span>.
         </p>
 
-
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 justify-center md:justify-start">
           <button
             onClick={() => scrollToSection("contact")}
-            className="bg-violet-400 text-black px-6 py-2.5 rounded-full font-semibold hover:scale-105 hover:shadow-lg transition-all duration-300 text-sm sm:text-base"
+            className="cursor-pointer bg-violet-400 text-black px-6 py-2.5 rounded-full font-semibold hover:scale-105 hover:shadow-lg transition-all duration-300 text-sm sm:text-base"
           >
             Connect With Me
           </button>
           <button
             onClick={() => scrollToSection("projects")}
-            className="px-6 py-2.5 rounded-full border border-violet-400 text-violet-400 hover:bg-violet-400/10 hover:scale-105 transition-all duration-300 text-sm sm:text-base font-semibold"
+            className="cursor-pointer px-6 py-2.5 rounded-full border border-violet-400 text-violet-400 hover:bg-violet-400/10 hover:scale-105 transition-all duration-300 text-sm sm:text-base font-semibold"
           >
             Take A Look
           </button>
         </div>
       </motion.div>
 
-
       <motion.div
         onClick={handleScroll}
         className="
           absolute bottom-8 left-1/2 transform -translate-x-1/2 
-          flex flex-col items-center cursor-pointer group z-30
+          flex flex-col items-center group z-30 cursor-pointer
         "
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -142,7 +140,7 @@ export const HeroSection = () => {
         viewport={{ once: true }}
       >
         <span className="text-xs sm:text-sm text-gray-400 mb-2">Scroll</span>
-        <div className="w-9 sm:w-10 h-9 sm:h-10 flex items-center justify-center rounded-full bg-violet-400/20 group-hover:bg-violet-400/40 transition-colors duration-300">
+        <div className="w-9 sm:w-10 h-9 sm:h-10 flex items-center justify-center rounded-full bg-violet-400/20 group-hover:bg-violet-400/40 transition-colors duration-300 cursor-pointer">
           <ArrowDown className="h-4 sm:h-5 w-4 sm:w-5 text-violet-400 group-hover:text-white transition-colors duration-300 animate-bounce" />
         </div>
       </motion.div>

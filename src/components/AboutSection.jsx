@@ -31,7 +31,6 @@ export const AboutSection = () => {
       className="relative py-28 px-6 md:py-40 bg-[#0b0c1a] text-white overflow-hidden"
     >
       <div className="max-w-6xl mx-auto relative flex flex-col items-center text-center">
-        
         <motion.h2
           className="text-4xl md:text-5xl font-bold mb-8 tracking-tight"
           initial={{ opacity: 0, y: 30 }}
@@ -41,7 +40,6 @@ export const AboutSection = () => {
         >
           About <span className="text-violet-400">Me</span>
         </motion.h2>
-
 
         <motion.p
           className="max-w-4xl text-gray-300 text-base md:text-lg leading-relaxed md:leading-loose tracking-wide mb-10"
@@ -59,33 +57,34 @@ export const AboutSection = () => {
           to optimize performance, enhance security, and accelerate software delivery.
         </motion.p>
 
-
         <motion.div
-            className="flex flex-col sm:flex-row gap-4 mb-24"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
+          className="flex flex-col sm:flex-row gap-4 mb-24"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+
+          <button
+            onClick={() => {
+              const section = document.getElementById("contact");
+              section?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="cursor-pointer px-6 py-3 rounded-full bg-violet-400 text-black font-semibold shadow-[0_0_25px_rgba(139,92,246,0.4)] transition-all duration-300 hover:bg-violet-500 hover:shadow-[0_0_45px_rgba(139,92,246,0.7)] hover:scale-[1.05] active:scale-[0.98]"
           >
-            <a
-              href="#contact"
-              className="px-6 py-3 rounded-full bg-violet-400 text-black font-semibold shadow-[0_0_25px_rgba(139,92,246,0.4)] transition-all duration-300 hover:bg-violet-500 hover:shadow-[0_0_45px_rgba(139,92,246,0.7)] hover:scale-[1.05] active:scale-[0.98]"
-            >
-              Connect With Me
-            </a>
+            Connect With Me
+          </button>
 
-            <a
-              href="/dharani.portfolio-v2/DHARANIDHARAN_RESUME.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 rounded-full border border-violet-400 text-violet-400 font-semibold transition-all duration-300 hover:shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:scale-[1.05] active:scale-[0.98]"
-            >
-              View Resume
-            </a>
-          </motion.div>
-
+          <a
+            href="/dharani.portfolio-v2/DHARANIDHARAN_RESUME.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer px-6 py-3 rounded-full border border-violet-400 text-violet-400 font-semibold transition-all duration-300 hover:shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:scale-[1.05] active:scale-[0.98]"
+          >
+            View Resume
+          </a>
+        </motion.div>
       </div>
-
 
       <div className="max-w-6xl mx-auto relative border-l border-violet-400/30 md:border-none">
         {skills.map((skill, i) => (
@@ -99,7 +98,6 @@ export const AboutSection = () => {
               i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
             }`}
           >
-
             {i !== skills.length - 1 && (
               <div
                 className={`absolute hidden md:block w-[2px] bg-gradient-to-b from-violet-400/30 to-transparent h-40 ${
@@ -107,7 +105,6 @@ export const AboutSection = () => {
                 } top-full`}
               ></div>
             )}
-
 
             <div className="w-full md:w-1/2 flex justify-center">
               <div className="relative group w-[90%] sm:w-[85%] md:w-[420px] lg:w-[460px] p-8 md:p-10 rounded-2xl border border-violet-400/20 bg-gradient-to-br from-violet-400/10 to-transparent backdrop-blur-xl shadow-[0_0_35px_rgba(139,92,246,0.3)] hover:shadow-[0_0_60px_rgba(139,92,246,0.45)] hover:scale-[1.05] transition-all duration-500">
@@ -125,7 +122,6 @@ export const AboutSection = () => {
           </motion.div>
         ))}
       </div>
-
 
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div className="absolute top-[50%] left-[50%] w-[80vw] h-[80vw] -translate-x-1/2 -translate-y-1/2 bg-violet-500/10 rounded-full blur-[130px] opacity-40" />
