@@ -7,7 +7,7 @@ const Loader = () => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-[#0b0c1a] z-50">
-      <h1 className="flex text-4xl md:text-6xl font-bold tracking-widest">
+      <h1 className="flex text-3xl sm:text-4xl md:text-5xl font-bold tracking-widest">
         
         {firstPart.map((letter, index) => (
           <motion.span

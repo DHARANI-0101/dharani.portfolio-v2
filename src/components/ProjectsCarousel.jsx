@@ -11,42 +11,42 @@ const projects = [
     id: 1,
     title: "SaaS Landing Page",
     description: "A Beautiful Landing Page Built With React And Tailwind.",
-    image: "/projects/project1.png",
+    image: "/dharani.portfolio-v2/projects/project1.png",
     tags: ["React", "TailwindCSS", "Supabase"],
   },
   {
     id: 2,
     title: "Orbit Analytics Dashboard",
     description: "Interactive Analytics Dashboard With Data Visualization And Filters.",
-    image: "/projects/project2.png",
+    image: "/dharani.portfolio-v2/projects/project2.png",
     tags: ["TypeScript", "D3.js", "Next.js"],
   },
   {
     id: 3,
     title: "E-commerce Platform",
     description: "Full-Featured E-commerce Platform With Authentication And Payments.",
-    image: "/projects/project3.png",
+    image: "/dharani.portfolio-v2/projects/project3.png",
     tags: ["React", "Node.js", "Stripe"],
   },
   {
     id: 4,
     title: "Portfolio Website",
     description: "A Personal Portfolio Website With Animations.",
-    image: "/projects/project4.png",
+    image: "/dharani.portfolio-v2/projects/project4.png",
     tags: ["React", "TailwindCSS"],
   },
   {
     id: 5,
     title: "Blog Platform",
     description: "A Fully Functional Blog Platform With CMS.",
-    image: "/projects/project5.png",
+    image: "/dharani.portfolio-v2/projects/project5.png",
     tags: ["Next.js", "Sanity"],
   },
   {
     id: 6,
     title: "Task Manager App",
     description: "Organize Tasks With Authentication And Realtime Updates.",
-    image: "/projects/project6.png",
+    image: "/dharani.portfolio-v2/projects/project6.png",
     tags: ["React", "Firebase"],
   },
 ];
@@ -57,6 +57,7 @@ export const ProjectsCarousel = () => {
       id="projects"
       className="py-24 bg-[#0b0c1a] text-white relative overflow-hidden"
     >
+
       <style>
         {`
           .swiper-bullet {
@@ -76,10 +77,12 @@ export const ProjectsCarousel = () => {
         `}
       </style>
 
+
       <div className="text-center mb-12 px-4 md:px-8">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">
           Featured <span className="text-violet-400">Projects</span>
         </h2>
+
 
         <p className="text-white text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
           Here Are Some Of My Recent Projects. Each Project Was Carefully Crafted
@@ -102,8 +105,9 @@ export const ProjectsCarousel = () => {
           pagination={{
             el: ".custom-pagination",
             clickable: true,
-            renderBullet: (index, className) =>
-              `<span class="${className} swiper-bullet"></span>`,
+            renderBullet: (index, className) => {
+              return `<span class="${className} swiper-bullet"></span>`;
+            },
           }}
           breakpoints={{
             320: { slidesPerView: 1 },
@@ -112,19 +116,16 @@ export const ProjectsCarousel = () => {
           }}
           onSwiper={(swiper) => {
             const container = swiper.el;
-
-            container.addEventListener("mouseenter", () => {
-              if (swiper.autoplay && swiper.autoplay.running) swiper.autoplay.stop();
-            });
-            container.addEventListener("mouseleave", () => {
-              if (swiper.autoplay && !swiper.autoplay.running) swiper.autoplay.start();
-            });
+            container.addEventListener("mouseenter", () => swiper.autoplay.stop());
+            container.addEventListener("mouseleave", () => swiper.autoplay.start());
           }}
         >
           {projects.map((project) => (
             <SwiperSlide key={project.id}>
               <div className="max-w-[400px] mx-auto bg-white/5 backdrop-blur-xl rounded-3xl p-6 hover:scale-[1.03] transition-all duration-300">
+                
                 <div className="relative rounded-xl overflow-hidden mb-4">
+               
                   <div
                     className="absolute inset-0 blur-2xl scale-110"
                     style={{
@@ -135,6 +136,7 @@ export const ProjectsCarousel = () => {
                     }}
                   ></div>
 
+               
                   <img
                     src={project.image}
                     alt={project.title}
@@ -183,14 +185,16 @@ export const ProjectsCarousel = () => {
           ))}
         </Swiper>
 
-        <button className="custom-prev absolute left-0 top-1/2 -translate-y-1/2 text-violet-400 p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 z-20 cursor-pointer">
+        
+        <button className="custom-prev absolute left-0 top-1/2 -translate-y-1/2 text-violet-400 p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 z-20">
           <ChevronLeft size={24} />
         </button>
-        <button className="custom-next absolute right-0 top-1/2 -translate-y-1/2 text-violet-400 p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 z-20 cursor-pointer">
+        <button className="custom-next absolute right-0 top-1/2 -translate-y-1/2 text-violet-400 p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 z-20">
           <ChevronRight size={24} />
         </button>
       </div>
 
+     
       <div className="custom-pagination flex justify-center gap-3 mt-8"></div>
     </section>
   );
