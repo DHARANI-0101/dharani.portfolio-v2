@@ -15,13 +15,18 @@ export const HeroSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentRole((prev) => (prev + 1) % roles.length);
-    }, 2000); 
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    section?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const handleScroll = () => {
     const section = document.getElementById("about");
-    if (section) section.scrollIntoView({ behavior: "smooth" });
+    section?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -52,6 +57,7 @@ export const HeroSection = () => {
         />
       </motion.div>
 
+
       <motion.div
         className="flex-1 text-center md:text-left space-y-3 md:space-y-4 z-10 max-w-lg"
         initial={{ opacity: 0, x: 30 }}
@@ -76,7 +82,7 @@ export const HeroSection = () => {
           Because Great Systems Aren’t Built — They’re Architected.
         </p>
 
-
+   
         <div className="relative h-8 sm:h-10 mt-4">
           <AnimatePresence mode="wait">
             <motion.h3
@@ -108,18 +114,18 @@ export const HeroSection = () => {
 
 
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 justify-center md:justify-start">
-          <a
-            href="#contact"
+          <button
+            onClick={() => scrollToSection("contact")}
             className="bg-violet-400 text-black px-6 py-2.5 rounded-full font-semibold hover:scale-105 hover:shadow-lg transition-all duration-300 text-sm sm:text-base"
           >
             Connect With Me
-          </a>
-          <a
-            href="#projects"
+          </button>
+          <button
+            onClick={() => scrollToSection("projects")}
             className="px-6 py-2.5 rounded-full border border-violet-400 text-violet-400 hover:bg-violet-400/10 hover:scale-105 transition-all duration-300 text-sm sm:text-base font-semibold"
           >
             Take A Look
-          </a>
+          </button>
         </div>
       </motion.div>
 
