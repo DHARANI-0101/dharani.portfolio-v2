@@ -1,91 +1,124 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { cn } from "@/lib/utils";
-
-const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
-];
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import logo from "../assets/logo.png";
 
 export const Navbar = () => {
-  const [scrollY, setScrollY] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
+ 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    const handleScroll = () => {
+      const sections = ["home", "about", "skills", "projects", "contact"];
+      const scrollPos = window.scrollY + 150; 
+      let current = "home";
+
+      for (let sec of sections) {
+        const el = document.getElementById(sec);
+        if (el && scrollPos >= el.offsetTop) {
+          current = sec;
+        }
+      }
+      setActiveSection(current);
+    };
+
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (e, href) => {
-    e.preventDefault();
-    const section = document.querySelector(href);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      setOpen(false); // close mobile menu if open
-    }
-  };
+  const navItems = ["home", "about", "skills", "projects", "contact"];
 
   return (
-    <nav
-      className={cn(
-        "fixed w-full z-50 transition-all duration-300 backdrop-blur-md",
-        scrollY > 10 ? "bg-[#0b0c1a]/90 shadow-md" : "bg-transparent"
-      )}
-    >
-      <div className="max-w-6xl mx-auto flex justify-between items-center px-6 sm:px-10 py-4">
-        <a href="#home" className="text-2xl font-bold text-violet-400">
-          Dharani
+    <nav className="fixed top-0 left-0 w-full z-50 bg-[#0b0c1a]/80 backdrop-blur-md border-b border-violet-400/20">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+       
+        <a href="#home" className="flex items-center">
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-14 h-14 sm:w-16 sm:h-16 rounded-full cursor-pointer hover:scale-105 transition-transform duration-300"
+          />
         </a>
 
-        {/* Desktop menu */}
-        <ul className="hidden md:flex gap-8 text-white font-medium">
+       
+        <div className="hidden md:flex gap-8 text-white font-medium">
           {navItems.map((item) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="hover:text-violet-400 transition-colors duration-300"
-              >
-                {item.label}
-              </a>
-            </li>
+            <a
+              key={item}
+              href={`#${item}`}
+              className={`relative transition-colors duration-300 ${
+                activeSection === item
+                  ? "text-violet-400"
+                  : "text-white hover:text-violet-400"
+              }`}
+            >
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+              {activeSection === item && (
+                <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-violet-400 rounded-full"></span>
+              )}
+            </a>
           ))}
-        </ul>
-
-        {/* Mobile menu toggle */}
-        <div
-          className="md:hidden flex items-center cursor-pointer text-white"
-          onClick={() => setOpen(!open)}
-        >
-          <div className="space-y-1">
-            <span className="block w-6 h-0.5 bg-white"></span>
-            <span className="block w-6 h-0.5 bg-white"></span>
-            <span className="block w-6 h-0.5 bg-white"></span>
-          </div>
         </div>
 
-        {/* Mobile menu */}
-        {open && (
-          <ul className="absolute top-full right-0 mt-2 w-40 bg-[#0b0c1a]/95 backdrop-blur-md rounded-md shadow-lg py-4 flex flex-col gap-4 px-4">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href)}
-                  className="block text-white hover:text-violet-400 transition-colors duration-300"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
+        
+        <button
+          className="md:hidden text-white focus:outline-none hover:text-violet-400 cursor-pointer transition"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
+
+
+<AnimatePresence>
+  {menuOpen && (
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: 0 }}
+      exit={{ x: "100%" }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      className="fixed top-20 right-4 w-[85%] sm:w-[60%] md:hidden bg-[#15162b] border border-violet-400/30 rounded-2xl shadow-[0_0_40px_rgba(139,92,246,0.3)] backdrop-blur-xl p-8 z-50"
+    >
+
+      <h2 className="text-center text-xl font-bold text-violet-400 mb-6">
+        NAVIGATIONS
+      </h2>
+
+      <ul className="flex flex-col gap-6 text-center text-lg text-white font-medium">
+        {navItems.map((item, i) => (
+          <motion.li
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.1 }}
+          >
+            <a
+              href={`#${item}`}
+              className={`block py-2 rounded-lg transition-colors duration-300 ${
+                activeSection === item
+                  ? "text-violet-400 bg-violet-400/10"
+                  : "text-white hover:text-violet-400 hover:bg-violet-400/10"
+              }`}
+              onClick={() => setMenuOpen(false)}
+            >
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+            </a>
+          </motion.li>
+        ))}
+      </ul>
+
+
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute w-[300px] h-[300px] bg-violet-500/20 blur-[100px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
     </nav>
   );
 };
