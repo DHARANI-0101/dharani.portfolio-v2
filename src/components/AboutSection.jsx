@@ -75,7 +75,7 @@ export const AboutSection = () => {
             </a>
 
             <a
-              href="/DHARANIDHARAN_RESUME.pdf"
+              href="/dharani.portfolio-v2/DHARANIDHARAN_RESUME.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-full border border-violet-400 text-violet-400 font-semibold transition-all duration-300 hover:shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:scale-[1.05] active:scale-[0.98]"
