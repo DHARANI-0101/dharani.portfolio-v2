@@ -10,8 +10,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "./", // ✅ ensures assets are loaded relatively
+  base: "/dharani.portfolio-v2/", 
   server: {
-    open: true, // ✅ auto opens browser
+    open: true, 
   },
 });
