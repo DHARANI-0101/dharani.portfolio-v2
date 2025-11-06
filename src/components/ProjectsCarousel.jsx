@@ -186,10 +186,10 @@ export const ProjectsCarousel = () => {
         </Swiper>
 
         
-        <button className="custom-prev absolute left-0 top-1/2 -translate-y-1/2 text-violet-400 p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 z-20">
+        <button className="custom-prev absolute left-0 top-1/2 -translate-y-1/2 text-violet-400 p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 z-20 cursor-pointer">
           <ChevronLeft size={24} />
         </button>
-        <button className="custom-next absolute right-0 top-1/2 -translate-y-1/2 text-violet-400 p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 z-20">
+        <button className="custom-next absolute right-0 top-1/2 -translate-y-1/2 text-violet-400 p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 z-20 cursor-pointer">
           <ChevronRight size={24} />
         </button>
       </div>
