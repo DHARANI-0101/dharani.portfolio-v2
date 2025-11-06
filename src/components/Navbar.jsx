@@ -40,10 +40,9 @@ export const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full z-50 bg-[#0b0c1a]/80 backdrop-blur-md border-b border-violet-400/20">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
 
-
         <div
           className="flex items-center cursor-pointer"
-          onClick={() => (window.location.href = window.location.origin)}
+          onClick={() => window.location.reload()} // ✅ Fixed for GitHub Pages
         >
           <img
             src={logo}
@@ -80,6 +79,7 @@ export const Navbar = () => {
           {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
+
 
       <AnimatePresence>
         {menuOpen && (
@@ -118,6 +118,7 @@ export const Navbar = () => {
                 </motion.li>
               ))}
             </ul>
+
 
             <div className="absolute inset-0 -z-10 pointer-events-none">
               <div className="absolute w-[300px] h-[300px] bg-violet-500/20 blur-[100px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
