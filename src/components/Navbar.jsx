@@ -9,14 +9,13 @@ export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  const navItems = ["home", "about", "skills", "projects", "contact"];
-
   useEffect(() => {
     const handleScroll = () => {
+      const sections = ["home", "about", "skills", "projects", "contact"];
       const scrollPos = window.scrollY + 150;
       let current = "home";
 
-      for (let sec of navItems) {
+      for (let sec of sections) {
         const el = document.getElementById(sec);
         if (el && scrollPos >= el.offsetTop) {
           current = sec;
@@ -30,6 +29,8 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navItems = ["home", "about", "skills", "projects", "contact"];
+
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     section?.scrollIntoView({ behavior: "smooth" });
@@ -39,14 +40,15 @@ export const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full z-50 bg-[#0b0c1a]/80 backdrop-blur-md border-b border-violet-400/20">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
 
+
         <div
           className="flex items-center cursor-pointer"
-          onClick={() => window.location.reload()}
+          onClick={() => (window.location.href = window.location.origin)}
         >
           <img
             src={logo}
             alt="Logo"
-            className="w-14 h-14 sm:w-16 sm:h-16 rounded-full hover:scale-105 transition-transform duration-300 cursor-pointer"
+            className="w-14 h-14 sm:w-16 sm:h-16 rounded-full hover:scale-105 transition-transform duration-300"
           />
         </div>
 
@@ -56,11 +58,11 @@ export const Navbar = () => {
             <button
               key={item}
               onClick={() => scrollToSection(item)}
-              className={`relative transition-colors duration-300 cursor-pointer ${
+              className={`relative transition-colors duration-300 ${
                 activeSection === item
                   ? "text-violet-400"
                   : "text-white hover:text-violet-400"
-              }`}
+              } cursor-pointer`}
             >
               {item.charAt(0).toUpperCase() + item.slice(1)}
               {activeSection === item && (
@@ -78,7 +80,6 @@ export const Navbar = () => {
           {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
-
 
       <AnimatePresence>
         {menuOpen && (
@@ -106,11 +107,11 @@ export const Navbar = () => {
                       scrollToSection(item);
                       setMenuOpen(false);
                     }}
-                    className={`block py-2 rounded-lg transition-colors duration-300 cursor-pointer ${
+                    className={`block py-2 rounded-lg transition-colors duration-300 w-full ${
                       activeSection === item
                         ? "text-violet-400 bg-violet-400/10"
                         : "text-white hover:text-violet-400 hover:bg-violet-400/10"
-                    }`}
+                    } cursor-pointer`}
                   >
                     {item.charAt(0).toUpperCase() + item.slice(1)}
                   </button>
