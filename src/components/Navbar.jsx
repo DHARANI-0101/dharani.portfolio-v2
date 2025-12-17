@@ -42,7 +42,7 @@ export const Navbar = () => {
 
         <div
           className="flex items-center cursor-pointer"
-          onClick={() => window.location.reload()} // ✅ Fixed for GitHub Pages
+          onClick={() => window.location.reload()} 
         >
           <img
             src={logo}

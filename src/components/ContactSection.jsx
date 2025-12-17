@@ -13,7 +13,7 @@ export const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    emailjs.sendForm(import.meta.VITE_SERVICE_ID, import.meta.VITE_TEMPLATE_ID, e.target, import.meta.VITE_PUBLIC_KEY)
+    emailjs.sendForm(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID, e.target, import.meta.env.VITE_PUBLIC_KEY)
       .then(
         () => {
           toast({
@@ -68,7 +68,7 @@ export const ContactSection = () => {
         </motion.h2>
 
         <motion.p
-          className="text-white mb-14 leading-relaxed text-lg max-w-lg mx-auto"
+          className="text-white text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-14"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -158,7 +158,6 @@ export const ContactSection = () => {
           ))}
         </motion.div>
       </motion.div>
-
 
       <motion.div
         className="absolute -z-10 inset-0 overflow-hidden"

@@ -6,7 +6,7 @@ import avatar from "../assets/hero.png";
 const roles = [
   "Full Stack Developer",
   "DevOps Engineer",
-  "n8n Automation Engineer",
+  "Automation Engineer",
 ];
 
 export const HeroSection = () => {

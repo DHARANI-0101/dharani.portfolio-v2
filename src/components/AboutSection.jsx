@@ -15,7 +15,7 @@ export const AboutSection = () => {
     },
     {
       icon: <Workflow className="h-8 w-8 text-violet-400" />,
-      title: "n8n Automation",
+      title: "n8n & MCP Automation",
       desc: "Orchestrating event-driven workflows and system integrations using enterprise automation tools to optimize business processes, reduce manual overhead, and enable data-driven decision making.",
     },
     {
@@ -42,7 +42,7 @@ export const AboutSection = () => {
         </motion.h2>
 
         <motion.p
-          className="max-w-4xl text-gray-300 text-base md:text-lg leading-relaxed md:leading-loose tracking-wide mb-10"
+          className="max-w-4xl text-white text-base md:text-lg leading-relaxed md:leading-loose tracking-wide mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -113,7 +113,7 @@ export const AboutSection = () => {
                     {skill.icon}
                   </div>
                   <h3 className="text-xl font-semibold text-violet-400 mb-3">{skill.title}</h3>
-                  <p className="text-gray-300 text-base leading-relaxed">{skill.desc}</p>
+                  <p className="text-whites text-base leading-relaxed">{skill.desc}</p>
                 </div>
               </div>
             </div>
