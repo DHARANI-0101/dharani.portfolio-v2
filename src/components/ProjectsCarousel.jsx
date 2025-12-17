@@ -43,6 +43,24 @@ const projects = [
     tags: ["Node.js", "Express.js", "PostgreSQL"],
     github: "https://github.com/DHARANI-0101/permalist",
   },
+   {
+    id: 5,
+    title: "Secrets - Private Note Keeper",
+    description:
+      "Designed a secure secrets web app with OAuth authentication, encrypted sessions, and a PostgreSQL database.",
+    image: "/dharani.portfolio-v2/projects/project2.png",
+    tags: ["Node.js", "Express.js", "PostgreSQL"],
+    github: "https://github.com/DHARANI-0101/secret-keeper",
+  },
+  {
+    id: 6,
+    title: "Binance - MCP Server",
+    description:
+      "Developed a Binance MCP server with caching and retry logic to deliver real-time crypto prices and 24-hour changes to Claude.",
+    image: "/dharani.portfolio-v2/projects/project3.png",
+    tags: ["Python", "Claude", "MCP"],
+    github: "https://github.com/DHARANI-0101/binance-MCP-server",
+  },
 
 ];
 
