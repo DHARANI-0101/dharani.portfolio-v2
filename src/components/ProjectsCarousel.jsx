@@ -43,6 +43,7 @@ const projects = [
     tags: ["Node.js", "Express.js", "PostgreSQL"],
     github: "https://github.com/DHARANI-0101/permalist",
   },
+
 ];
 
 export const ProjectsCarousel = () => {

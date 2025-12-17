@@ -54,6 +54,9 @@ const skillIcons = {
   Enumeration: "/dharani.portfolio-v2/icons/Enumeration.svg",
   "GNU/Linux Standards": "/dharani.portfolio-v2/icons/GNU.svg",
   "SOC Analyst": "/dharani.portfolio-v2/icons/SOC.png",
+   GraphQL: "/dharani.portfolio-v2/icons/GraphQL.svg",
+   MCP: "/dharani.portfolio-v2/icons/MCP.svg",
+   Motoko: "/dharani.portfolio-v2/icons/Motoko.svg",
 };
 
 
@@ -69,10 +72,13 @@ const skills = {
     "Express",
     "Embedded JavaScript",
     "RESTful APIs",
+    "GraphQL",
     "PostgreSQL",
     "MySQL",
     "MongoDB",
     "Postman",
+    "Motoko",
+    "MCP",
   ],
   DevOps: [
     "Kubernetes",
