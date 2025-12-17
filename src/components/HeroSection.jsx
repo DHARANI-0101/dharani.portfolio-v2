@@ -3,19 +3,22 @@ import { ArrowDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import avatar from "../assets/hero.png";
 
-const roles = [
-  "Full Stack Developer",
-  "DevOps Engineer",
-  "Automation Engineer",
-];
+const roles = ["Software Developer", "DevOps Engineer"];
 
 export const HeroSection = () => {
   const [currentRole, setCurrentRole] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentRole((prev) => (prev + 1) % roles.length);
-    }, 2000);
+      setCurrentRole((prev) => {
+        let next = prev;
+        while (next === prev && roles.length > 1) {
+          next = Math.floor(Math.random() * roles.length);
+        }
+        return next;
+      });
+    }, 2500); 
+
     return () => clearInterval(interval);
   }, []);
 
@@ -24,24 +27,11 @@ export const HeroSection = () => {
     section?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleScroll = () => {
-    const section = document.getElementById("about");
-    section?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section
       id="home"
-      className="
-        min-h-screen flex flex-col md:flex-row 
-        items-center justify-center 
-        bg-[#0b0c1a] text-white 
-        px-6 sm:px-10 md:px-16 lg:px-24 
-        pt-28 md:pt-32
-        pb-24 relative overflow-hidden
-      "
+      className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-[#0b0c1a] text-white px-6 sm:px-10 md:px-16 lg:px-24 pt-28 md:pt-32 pb-24 relative overflow-hidden"
     >
-
       <motion.div
         className="relative flex-1 flex justify-center items-center mb-10 md:mb-0"
         initial={{ opacity: 0, y: 30 }}
@@ -56,7 +46,6 @@ export const HeroSection = () => {
           className="relative w-48 sm:w-56 md:w-64 lg:w-72 drop-shadow-[0_0_40px_rgba(139,92,246,0.6)] animate-float-fast"
         />
       </motion.div>
-
 
       <motion.div
         className="flex-1 text-center md:text-left space-y-3 md:space-y-4 z-10 max-w-lg"
@@ -82,34 +71,29 @@ export const HeroSection = () => {
           Because Great Systems Aren’t Built — They’re Architected.
         </p>
 
-
         <div className="relative h-8 sm:h-10 mt-4">
           <AnimatePresence mode="wait">
             <motion.h3
-              key={currentRole}
+              key={currentRole} 
               className="absolute w-full text-lg sm:text-xl md:text-2xl font-semibold"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
-              I’m A{" "}
-              <span className="text-violet-400">{roles[currentRole]}</span>.
+              I’m A <span className="text-violet-400">{roles[currentRole]}</span>.
             </motion.h3>
           </AnimatePresence>
         </div>
 
         <p className="text-xs sm:text-sm text-gray-400">
-          Open To New{" "}
-          <span className="text-violet-400 font-bold">Opportunities</span>.
+          Open To New <span className="text-violet-400 font-bold">Opportunities</span>.
         </p>
 
         <p className="text-xs sm:text-sm text-gray-400 max-w-md mx-auto md:mx-0 leading-relaxed mt-2">
-          Designing Secure Software Architectures And Autonomous Workflows — Powering
-          Resilient Cloud And Operations Ecosystems{" "}
-          <span className="text-violet-400 font-bold">
-            Built For Scale And Performance
-          </span>.
+          Designing Secure Software Architectures And Autonomous Workflows —
+          Powering Resilient Cloud And Operations Ecosystems{" "}
+          <span className="text-violet-400 font-bold">Built For Scale And Performance</span>.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 justify-center md:justify-start">
@@ -127,20 +111,17 @@ export const HeroSection = () => {
           </button>
         </div>
       </motion.div>
-
+      
       <motion.div
-        onClick={handleScroll}
-        className="
-          absolute bottom-8 left-1/2 transform -translate-x-1/2 
-          flex flex-col items-center group z-30 cursor-pointer
-        "
+        onClick={() => scrollToSection("about")}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center group z-30 cursor-pointer"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
         viewport={{ once: true }}
       >
         <span className="text-xs sm:text-sm text-gray-400 mb-2">Scroll</span>
-        <div className="w-9 sm:w-10 h-9 sm:h-10 flex items-center justify-center rounded-full bg-violet-400/20 group-hover:bg-violet-400/40 transition-colors duration-300 cursor-pointer">
+        <div className="w-9 sm:w-10 h-9 sm:h-10 flex items-center justify-center rounded-full bg-violet-400/20 group-hover:bg-violet-400/40 transition-colors duration-300">
           <ArrowDown className="h-4 sm:h-5 w-4 sm:w-5 text-violet-400 group-hover:text-white transition-colors duration-300 animate-bounce" />
         </div>
       </motion.div>
